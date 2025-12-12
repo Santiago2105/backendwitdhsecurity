@@ -116,5 +116,16 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
+    @Override
+    public DTOUser add(DTOUser DTOuser) {
+        List<Authority> authorityList=authoritiesFromString(DTOuser.getAuthorities());
 
+        User newUser = new User(null, DTOuser.getUsername(),
+                new BCryptPasswordEncoder().encode(DTOuser.getPassword()),
+                true,authorityList);
+
+        newUser = userRepository.save(newUser);
+        DTOuser.setId(newUser.getId());
+        return DTOuser;
+    }
 }

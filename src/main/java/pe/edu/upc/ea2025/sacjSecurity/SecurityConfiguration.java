@@ -26,6 +26,12 @@ public class SecurityConfiguration {
             "/swagger-ui.html",
             "/swagger-ui/**",
 
+            // -- Login de nuevo usuarios
+            "cjsa/login/**",
+
+            // -- Registro de nuevo usuarios
+            "cjsa/register/**",
+
     };
 
     // Authentication Manager
@@ -66,10 +72,14 @@ public class SecurityConfiguration {
         http.csrf(AbstractHttpConfigurer::disable);
         http.cors(Customizer.withDefaults());
         http.authorizeHttpRequests( (auth) -> auth
-                //.requestMatchers(AUTH_WHITELIST).permitAll()
-                .requestMatchers("/cjsa/login","/cjsa/users").permitAll()
-                //.requestMatchers(HttpMethod.GET, "/cjsa/equipment/disponibles/**").permitAll()
+                .requestMatchers(AUTH_WHITELIST).permitAll()
                 .requestMatchers(HttpMethod.POST, "/cjsa/rents/insert").hasAuthority("ROLE_VENTAS")
+
+                .requestMatchers(HttpMethod.GET,"/cjsa/rents/**").hasAnyAuthority("ROLE_ADMIN","ROLE_VENTAS")
+                .requestMatchers(HttpMethod.PUT,"/cjsa/rents/**").hasAnyAuthority("ROLE_ADMIN","ROLE_VENTAS")
+                .requestMatchers(HttpMethod.POST,"/cjsa/rents/**").hasAnyAuthority("ROLE_ADMIN")
+                .requestMatchers(HttpMethod.DELETE,"/cjsa/rents/**").hasAnyAuthority("ROLE_ADMIN")
+
                 .anyRequest().authenticated()
         );
 
