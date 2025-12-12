@@ -67,7 +67,7 @@ public class SecurityConfiguration {
         http.cors(Customizer.withDefaults());
         http.authorizeHttpRequests( (auth) -> auth
                 //.requestMatchers(AUTH_WHITELIST).permitAll()
-                .requestMatchers("/cjsa/login").permitAll()
+                .requestMatchers("/cjsa/login","/cjsa/users").permitAll()
                 //.requestMatchers(HttpMethod.GET, "/cjsa/equipment/disponibles/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/cjsa/rents/insert").hasAuthority("ROLE_VENTAS")
                 .anyRequest().authenticated()
