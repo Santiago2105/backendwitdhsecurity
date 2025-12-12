@@ -11,6 +11,7 @@ public interface UserService {
 
     public User addUser(DTOUser dtoUser);
     public User addUser(User user);
+    public DTOUser add(DTOUser DTOuser);
     //aqui se va a usar un DTO
 
 

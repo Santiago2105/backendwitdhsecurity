@@ -10,8 +10,8 @@ public class DTOToken {
     private Long id;
     private String authorities;
 
-    public DTOToken() {
-    }
+//    public DTOToken() {
+//    }
 
     public DTOToken(String jwtToken, Long id, String authorities) {
         this.jwtToken = jwtToken;

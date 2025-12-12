@@ -35,9 +35,9 @@ public class UserController {
 
 
     @PostMapping("/users")
-    public ResponseEntity<User> insertarUser(@RequestBody User user) {
-        User newUser =userService.addUser(user);
-        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
+    public ResponseEntity<DTOUser> register(@RequestBody DTOUser user){
+        user=userService.add(user);
+        return new ResponseEntity<>(user,HttpStatus.CREATED);
     }
 
     @PostMapping("/login")
