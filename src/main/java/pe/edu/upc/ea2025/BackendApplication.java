@@ -35,7 +35,7 @@ public class BackendApplication {
             //PARTE DE SEGURIDAD
             //CREANDO LOS ROLES O NIVELES DE SEGURIDAD ALGO ASI
             Authority authority1 = authorityService.addAuthority(new Authority("ROLE_ADMIN"));
-            Authority authority2 = authorityService.addAuthority(new Authority("ROLE_VENTAS"));
+            Authority authority2 = authorityService.addAuthority(new Authority("ROLE_PUBLICO"));
             Authority authority3 = authorityService.addAuthority(new Authority("ROLE_USER"));
 
 
