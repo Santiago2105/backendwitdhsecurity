@@ -34,13 +34,13 @@ public class UserController {
     private JwtUtilService jwtUtilService;
 
 
-    @PostMapping("/users")
+    @PostMapping("/users/register")
     public ResponseEntity<DTOUser> register(@RequestBody DTOUser user){
         user=userService.add(user);
         return new ResponseEntity<>(user,HttpStatus.CREATED);
     }
 
-    @PostMapping("/login")
+    @PostMapping("/users/login")
     public ResponseEntity<DTOToken> login(@RequestBody DTOUser user) {
 
         authenticationManager.authenticate(
