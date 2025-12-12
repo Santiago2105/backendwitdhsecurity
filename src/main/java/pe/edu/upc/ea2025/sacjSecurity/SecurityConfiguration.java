@@ -27,10 +27,10 @@ public class SecurityConfiguration {
             "/swagger-ui/**",
 
             // -- Login de nuevo usuarios
-            "cjsa/login/**",
+            "cjsa/users/login/**",
 
             // -- Registro de nuevo usuarios
-            "cjsa/register/**",
+            "cjsa/users/register/**",
 
     };
 
@@ -73,7 +73,6 @@ public class SecurityConfiguration {
         http.cors(Customizer.withDefaults());
         http.authorizeHttpRequests( (auth) -> auth
                 .requestMatchers(AUTH_WHITELIST).permitAll()
-                .requestMatchers(HttpMethod.POST, "/cjsa/rents/insert").hasAuthority("ROLE_VENTAS")
 
                 .requestMatchers(HttpMethod.GET,"/cjsa/rents/**").hasAnyAuthority("ROLE_ADMIN","ROLE_VENTAS")
                 .requestMatchers(HttpMethod.PUT,"/cjsa/rents/**").hasAnyAuthority("ROLE_ADMIN","ROLE_VENTAS")
